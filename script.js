@@ -1,0 +1,6 @@
+const colorPkr = document.querySelector(".color-picker")
+const sizePkr = document.querySelector(".size-picker")
+const colorBtn = document.querySelector(".color-button")
+const eraserBtn = document.querySelector(".eraser-button")
+const clearBtn = document.querySelector(".clear-button")
+const grid = document.querySelector("#grid")
