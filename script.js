@@ -58,6 +58,11 @@ function displaySize(size) {
     sizeDsp.textContent = `${size} x ${size}`
 }
 
+grid.addEventListener("mouseleave", () => {
+    mouseDown = false
+    mouseUp = true
+})
+
 colorPkr.addEventListener("change", () => changeColor(colorPkr.value))
 
 eraserBtn.addEventListener("click", () => changeColor("white"))
