@@ -47,6 +47,7 @@ body {
     width: 500px;
     height: 500px;
     user-select: none;
+    border: 1px solid black;
 }
 
 .footer {
