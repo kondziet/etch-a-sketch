@@ -9,14 +9,18 @@ const grid = document.querySelector("#grid")
 let mouseDown = false
 let mouseUp = true
 
-function createGrid(size) {
-
+function updateGrid() {
     clearGrid()
+    createGrid(sizePkr.value)
+}
+
+function createGrid(size) {
 
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
     
     for(let i = 0; i < size * size ; i++) {
+
         let gridItem = document.createElement("div")
         gridItem.addEventListener("mousedown", e => {
             e.target.style.backgroundColor = "black"
@@ -33,6 +37,7 @@ function createGrid(size) {
             }
         })
         grid.appendChild(gridItem)
+
     }
 
 }
@@ -47,6 +52,7 @@ function displaySize(size) {
     sizeDsp.textContent = `${size} x ${size}`
 }
 
+clearBtn.addEventListener("click", updateGrid)
 
-sizePkr.addEventListener("change", () => createGrid(sizePkr.value))
+sizePkr.addEventListener("change", updateGrid)
 sizePkr.addEventListener("input", () => displaySize(sizePkr.value))
