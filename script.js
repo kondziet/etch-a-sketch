@@ -9,6 +9,8 @@ const grid = document.querySelector("#grid")
 let mouseDown = false
 let mouseUp = true
 
+let color = colorPkr.value
+
 function updateGrid() {
     clearGrid()
     createGrid(sizePkr.value)
@@ -23,7 +25,7 @@ function createGrid(size) {
 
         let gridItem = document.createElement("div")
         gridItem.addEventListener("mousedown", e => {
-            e.target.style.backgroundColor = "black"
+            e.target.style.backgroundColor = color
             mouseDown = true
             mouseUp = false
         })
@@ -33,7 +35,7 @@ function createGrid(size) {
         })
         gridItem.addEventListener("mouseover", e => {
             if (mouseDown){
-                e.target.style.backgroundColor = "black"
+                e.target.style.backgroundColor = color
             }
         })
         grid.appendChild(gridItem)
@@ -48,11 +50,26 @@ function clearGrid() {
     }
 }
 
+function changeColor(newColor) {
+    color = newColor
+}
+
 function displaySize(size) {
     sizeDsp.textContent = `${size} x ${size}`
 }
+
+colorPkr.addEventListener("change", () => changeColor(colorPkr.value))
+
+eraserBtn.addEventListener("click", () => changeColor("white"))
+
+colorBtn.addEventListener("click", () => changeColor(colorPkr.value))
 
 clearBtn.addEventListener("click", updateGrid)
 
 sizePkr.addEventListener("change", updateGrid)
 sizePkr.addEventListener("input", () => displaySize(sizePkr.value))
+
+window.onload = () => {
+    updateGrid()
+    displaySize(sizePkr.value)
+}
